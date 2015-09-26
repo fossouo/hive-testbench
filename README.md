@@ -4,9 +4,11 @@ A. Check your installation of javac on your OS $
 [root@master hive-testbench]# alternatives --set javac /usr/jdk64/jdk1.8.0_40/bin/javac
 
 B. Build the test : tpcds-build.sh 
+
 ./tpcds-build.sh
 
 C. generate data :
+ 
  ./tpcds-setup.sh 1000  (generate 1 TB of data)
 
 The advantage of this version of hivebench is that it comes with all file integrate (not the official one : ex tpcds_kit.zip)
@@ -29,15 +31,16 @@ More than 50 sample TPC-DS queries and all TPC-H queries are included for you to
 
 This example assumes you have generated 1 TB of TPC-DS data during Step 5:
 
-  cd sample-queries-tpcds
-  hive -i testbench.settings
-  hive> use tpcds_bin_partitioned_orc_1000;
-  hive> source query55.sql;
-Note that the database is named based on the Data Scale chosen in step 3. At Data Scale 10000, your database will be named tpcds_bin_partitioned_orc_10000. At Data Scale 1000 it would be named tpcds_bin_partitioned_orc_1000. You can always show databases to get a list of available databases.
+cd sample-queries-tpcds
+hive -i testbench.settings
+hive> use tpcds_bin_partitioned_orc_1000;
+hive> source query55.sql;
 
-Similarly, if you generated 1 TB of TPC-H data during Step 5:
+Note that the database is named based on the Data Scale chosen in previous step. At Data Scale 10000, your database will be named tpcds_bin_partitioned_orc_10000. At Data Scale 1000 it would be named tpcds_bin_partitioned_orc_1000. You can always show databases to get a list of available databases.
 
-  cd sample-queries-tpch
-  hive -i testbench.settings
-  hive> use tpch_bin_partitioned_orc_1000;
-  hive> source tpch_query1.sql;
+Similarly, if you generated 1 TB of TPC-H data during the previous Step :
+
+ cd sample-queries-tpch
+ hive -i testbench.settings
+ hive> use tpch_bin_partitioned_orc_1000;
+ hive> source tpch_query1.sql;
